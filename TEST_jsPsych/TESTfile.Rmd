@@ -1,0 +1,37 @@
+---
+title: "TEST"
+author: "ShunsakuIsaji"
+date: '2022-06-05'
+output:
+ html_document:
+   mathjax: null
+   highlight: null
+   theme: null
+   css: ./jspsych/dist/jspsych.css
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE,message = FALSE, warning = FALSE)
+```
+
+```{r}
+library(htmltools)
+tagList(
+  tags$script(src = './jspsych/dist/jspsych.js'),
+  tags$script(src = './jspsych/dist/plugin-html-keyboard-response.js'),
+)
+```
+
+```{js}
+/*最初のおまじない*/
+const jsPsych = initJsPsych();
+/*提示する文字*/
+var text = "Hello World";
+/*提示する内容設定*/
+const stimuli = {
+ type: jsPsychHtmlKeyboardResponse,
+ stimulus: text
+}
+/*実験開始*/
+jsPsych.run([stimuli]);
+```
